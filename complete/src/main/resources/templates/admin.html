@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+</head>
+<body>
+    <h1>Welcome to Admin Panel</h1>
+    <div sec:authorize="isAuthenticated()">
+        Logged in as: <span sec:authentication="name"></span>
+        Role: <span sec:authentication="principal.authorities"></span>
+    </div>
+
+    <h2>User Management</h2>
+    <div th:if="${users != null}">
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Roles</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}">username</td>
+                <td th:text="${user.roles}">roles</td>
+            </tr>
+        </table>
+    </div>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</body>
+</html>
+
