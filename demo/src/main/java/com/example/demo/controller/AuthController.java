@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,6 +85,18 @@ public class AuthController {
     @GetMapping("/login")
     public String login() {
         return "redirect:/oauth2/authorization/keycloak";
+    }
+
+    @GetMapping("/logout-keycloak")
+    public String logoutKeycloak(HttpServletRequest request) {
+        // Clear local session
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        
+        // Redirect to KeyCloak logout endpoint
+        return "redirect:http://localhost:8180/realms/master/protocol/openid-connect/logout?post_logout_redirect_uri=http://localhost:8080/logout-success";
     }
 
     @GetMapping("/logout-success")

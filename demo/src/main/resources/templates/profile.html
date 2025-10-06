@@ -24,7 +24,9 @@
             <a class="navbar-brand" href="/">Spring Boot SSO Demo</a>
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/logout" style="color: rgba(255,255,255,.55);">Đăng xuất</a>
+                <form method="post" action="/logout" style="display: inline;">
+                    <button type="submit" class="nav-link btn btn-link" style="border: none; background: none; color: rgba(255,255,255,.55);">Đăng xuất</button>
+                </form>
             </div>
         </div>
     </nav>

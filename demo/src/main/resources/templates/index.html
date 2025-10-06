@@ -64,7 +64,10 @@
                                     <a href="/profile" class="btn btn-success">Xem Profile</a>
                                     <a href="/api/user" class="btn btn-info" target="_blank">API User Info</a>
                                     <a href="/api/tokens" class="btn btn-warning" target="_blank">API Token Info</a>
-                                    <a href="/logout" class="btn btn-danger">Đăng xuất</a>
+                                    <form method="post" action="/logout" style="display: inline;">
+                                        <button type="submit" class="btn btn-danger">Đăng xuất</button>
+                                    </form>
+                                    <a href="/logout-keycloak" class="btn btn-secondary">Force Logout KeyCloak</a>
                                 </div>
                             </div>
                         </div>
