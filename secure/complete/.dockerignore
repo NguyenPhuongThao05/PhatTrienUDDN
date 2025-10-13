@@ -1,0 +1,24 @@
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README*.md
+*.md
+
+# Docker files
+Dockerfile*
+docker-compose*.yml
+
+# Logs
+*.log
+logs/
