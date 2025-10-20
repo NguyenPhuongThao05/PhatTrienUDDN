@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securing-web-deployment
+  labels:
+    app: securing-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: securing-web
+  template:
+    metadata:
+      labels:
+        app: securing-web
+    spec:
+      containers:
+        - name: securing-web
+          image: securing-web-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          # Tạm thời disable health checks để debug
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8080
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 10
+          #   failureThreshold: 3
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 8080
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 20
+          #   failureThreshold: 3
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
