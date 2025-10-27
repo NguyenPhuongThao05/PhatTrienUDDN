@@ -46,7 +46,6 @@ public class RegistrationController {
                               Model model,
                               RedirectAttributes redirectAttributes) {
         
-        // Validate input
         if (registrationDto.getUsername() == null || registrationDto.getUsername().trim().isEmpty()) {
             model.addAttribute("error", "Username is required");
             return "signup";
@@ -69,12 +68,10 @@ public class RegistrationController {
         }
 
         try {
-            // Create new user
             User user = new User();
             user.setUsername(registrationDto.getUsername());
             user.setPassword(registrationDto.getPassword()); // Don't encode here, let UserService do it
             
-            // Assign USER role by default
             Set<String> roleNames = new HashSet<>();
             roleNames.add("USER");
             user.setRoles(roleNames);
