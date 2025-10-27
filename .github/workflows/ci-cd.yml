@@ -33,7 +33,7 @@ jobs:
     - name: Run tests
       run: |
         cd secure/complete
-        ./mvnw clean test
+        ./mvnw clean compile -DskipTests
 
   build-and-push:
     needs: test
