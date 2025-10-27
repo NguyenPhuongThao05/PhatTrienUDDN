@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
@@ -88,12 +88,12 @@ jobs:
       run: |
         # Update image tag in k8s manifests
         NEW_TAG=${{ github.sha }}
+        echo "Would update image tag to: ghcr.io/${{ github.repository }}/securing-web-app:main-${NEW_TAG:0:7}"
         sed -i "s|image: ghcr.io/${{ github.repository }}/securing-web-app:.*|image: ghcr.io/${{ github.repository }}/securing-web-app:main-${NEW_TAG:0:7}|g" secure/k8s-manifests/deployment.yaml
+        echo "Updated deployment.yaml with new image tag"
+        cat secure/k8s-manifests/deployment.yaml | grep "image:"
         
-    - name: Commit updated manifests
+    - name: Show updated manifests
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add secure/k8s-manifests/
-        git diff --staged --quiet || git commit -m "Update image tag to main-${{ github.sha }}"
-        git push
+        echo "Manifest updates completed. ArgoCD will need to be synced manually or configured to poll for changes."
+        echo "New image tag: ghcr.io/${{ github.repository }}/securing-web-app:main-${{ github.sha }}"
