@@ -42,9 +42,9 @@ public class SecurityConfig {
                 .ignoringRequestMatchers("/logout")
             )
             .exceptionHandling(exceptions -> exceptions
-                .authenticationEntryPoint((request, response, authException) -> {
-                    response.sendRedirect("/oauth2/authorization/keycloak");
-                })
+                .authenticationEntryPoint((request, response, authException) -> 
+                    response.sendRedirect("/oauth2/authorization/keycloak")
+                )
             );
 
         return http.build();
