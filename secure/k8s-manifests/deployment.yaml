@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: securing-web-app
-        image: ghcr.io/NguyenPhuongThao05/PhatTrienUDDN/securing-web-app:latest
+        image: ghcr.io/nguyenphuongthao05/phattrienuddn/securing-web-app:main-27a45c3
         ports:
         - containerPort: 8080
         env:
