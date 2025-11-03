@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/NguyenPhuongThao05/PhatTrienUDDN.git
     targetRevision: HEAD
-    path: k8s-manifests
+    path: secure/k8s-manifests
   destination:
     server: https://kubernetes.default.svc
     namespace: securing-web-app

@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: test-low-cpu-alert
+  namespace: monitoring
+  labels:
+    app: prometheus
+    prometheus: kube-prometheus
+    release: prometheus
+spec:
+  groups:
+  - name: test-cpu-alerts
+    rules:
+    - alert: TestLowCPUUsage
+      expr: (rate(container_cpu_usage_seconds_total[1m]) * 100) > 0.1
+      for: 10s
+      labels:
+        alertname: TestLowCPUUsage
+        severity: warning
+      annotations:
+        summary: "Test alert - Pod {{ $labels.pod }} has CPU usage > 0.1%"
+        description: "Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has CPU usage above 0.1%. Current value: {{ $value }}%"
