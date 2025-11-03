@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: securing-web-app:apps/Deployment:securing-web-app/securing-web-deployment
+    deployment.kubernetes.io/revision: "5"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"securing-web-app:apps/Deployment:securing-web-app/securing-web-deployment"},"labels":{"app":"securing-web-app"},"name":"securing-web-deployment","namespace":"securing-web-app"},"spec":{"replicas":3,"selector":{"matchLabels":{"app":"securing-web-app"}},"template":{"metadata":{"labels":{"app":"securing-web-app"}},"spec":{"containers":[{"env":[{"name":"SPRING_PROFILES_ACTIVE","value":"mysql"},{"name":"SPRING_DATASOURCE_URL","value":"jdbc:mysql://mysql-service:3306/securedb?useSSL=false\u0026allowPublicKeyRetrieval=true"},{"name":"SPRING_DATASOURCE_USERNAME","valueFrom":{"secretKeyRef":{"key":"mysql-username","name":"mysql-secret"}}},{"name":"SPRING_DATASOURCE_PASSWORD","valueFrom":{"secretKeyRef":{"key":"mysql-password","name":"mysql-secret"}}}],"image":"ghcr.io/nguyenphuongthao05/phattrienuddn/securing-web-app:main-27a45c3","livenessProbe":{"httpGet":{"path":"/actuator/health","port":8080},"initialDelaySeconds":60,"periodSeconds":30},"name":"securing-web-app","ports":[{"containerPort":8080}],"readinessProbe":{"httpGet":{"path":"/actuator/health","port":8080},"initialDelaySeconds":30,"periodSeconds":10},"resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"250m","memory":"256Mi"}}}]}}}}
+  creationTimestamp: "2025-10-27T04:38:32Z"
+  generation: 12
+  labels:
+    app: securing-web-app
+  name: securing-web-deployment
+  namespace: securing-web-app
+  resourceVersion: "111174"
+  uid: 3ab9eeee-a56c-4d49-89ce-eac0d46f2d54
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: securing-web-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: securing-web-app
+    spec:
+      containers:
+      - env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: mysql
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql-service:3306/securedb?useSSL=false&allowPublicKeyRetrieval=true
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: mysql-username
+              name: mysql-secret
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mysql-password
+              name: mysql-secret
+        image: ghcr.io/nguyenphuongthao05/phattrienuddn/securing-web-app:main-27a45c3
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: securing-web-app
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  conditions:
+  - lastTransitionTime: "2025-11-03T05:43:05Z"
+    lastUpdateTime: "2025-11-03T05:43:05Z"
+    message: Deployment does not have minimum availability.
+    reason: MinimumReplicasUnavailable
+    status: "False"
+    type: Available
+  - lastTransitionTime: "2025-10-27T04:38:32Z"
+    lastUpdateTime: "2025-11-03T06:09:03Z"
+    message: ReplicaSet "securing-web-deployment-5cf76bcbf5" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  observedGeneration: 12
+  replicas: 4
+  unavailableReplicas: 4
+  updatedReplicas: 1

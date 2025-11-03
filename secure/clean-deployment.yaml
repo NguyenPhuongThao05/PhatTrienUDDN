@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: securing-web-app
+  name: securing-web-deployment
+  namespace: securing-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: securing-web-app
+  template:
+    metadata:
+      labels:
+        app: securing-web-app
+    spec:
+      containers:
+      - env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: mysql
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql-service:3306/securedb?useSSL=false&allowPublicKeyRetrieval=true
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: mysql-username
+              name: mysql-secret
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mysql-password
+              name: mysql-secret
+        image: ghcr.io/nguyenphuongthao05/phattrienuddn/securing-web-app:main-27a45c3
+        imagePullPolicy: IfNotPresent
+        name: securing-web-app
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 300m
+            memory: 256Mi
