@@ -1,0 +1,34 @@
+# MongoDB Data Files (không commit database files)
+data/
+logs/
+
+# MongoDB Journal Files
+**/journal/
+**/*.lock
+**/*.wt
+
+# MongoDB Log Files
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Temporary Files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Node.js (nếu có)
+node_modules/
+npm-debug.log*
+
+# IDE Files
+.vscode/
+.idea/
+*.iml
+
+# Backup files
+*.backup
+*.bak
