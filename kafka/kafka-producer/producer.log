@@ -1,0 +1,74 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.example:kafka-producer >---------------------
+[INFO] Building Kafka Producer 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.0:run (default-cli) > test-compile @ kafka-producer >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ kafka-producer ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ kafka-producer ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ kafka-producer ---
+[INFO] skip non existing resourceDirectory /Users/socnhi/Documents/PTUDDN/spring/kafka/kafka-producer/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ kafka-producer ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:3.2.0:run (default-cli) < test-compile @ kafka-producer <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.0:run (default-cli) @ kafka-producer ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-17T15:31:39.828+07:00  INFO 34665 --- [kafka-producer] [           main] c.e.producer.KafkaProducerApplication    : Starting KafkaProducerApplication using Java 17.0.17 with PID 34665 (/Users/socnhi/Documents/PTUDDN/spring/kafka/kafka-producer/target/classes started by socnhi in /Users/socnhi/Documents/PTUDDN/spring/kafka/kafka-producer)
+2025-11-17T15:31:39.829+07:00  INFO 34665 --- [kafka-producer] [           main] c.e.producer.KafkaProducerApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-11-17T15:31:40.540+07:00  INFO 34665 --- [kafka-producer] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-11-17T15:31:40.547+07:00  INFO 34665 --- [kafka-producer] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-17T15:31:40.547+07:00  INFO 34665 --- [kafka-producer] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-17T15:31:40.581+07:00  INFO 34665 --- [kafka-producer] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-17T15:31:40.582+07:00  INFO 34665 --- [kafka-producer] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 728 ms
+2025-11-17T15:31:40.959+07:00  INFO 34665 --- [kafka-producer] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2025-11-17T15:31:40.967+07:00  INFO 34665 --- [kafka-producer] [           main] c.e.producer.KafkaProducerApplication    : Started KafkaProducerApplication in 1.365 seconds (process running for 1.619)
+2025-11-17T15:31:50.178+07:00  INFO 34665 --- [kafka-producer] [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-17T15:31:50.183+07:00  INFO 34665 --- [kafka-producer] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-11-17T15:31:50.195+07:00  INFO 34665 --- [kafka-producer] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2025-11-17T15:32:02.886+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 1, offset: 0
+2025-11-17T15:32:48.459+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 2, offset: 0
+2025-11-17T15:32:52.617+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 3, offset: 1
+2025-11-17T15:34:24.638+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 4, offset: 0
+2025-11-17T15:34:25.650+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 5, offset: 1
+2025-11-17T15:34:26.629+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 6, offset: 1
+2025-11-17T15:34:27.528+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 10, offset: 2
+2025-11-17T15:34:27.538+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 7, offset: 2
+2025-11-17T15:34:27.541+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 8, offset: 3
+2025-11-17T15:34:27.541+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 11, offset: 4
+2025-11-17T15:34:27.546+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 9, offset: 2
+2025-11-17T15:35:04.502+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 12, offset: 3
+2025-11-17T15:36:58.747+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 13, offset: 4
+2025-11-17T15:39:42.360+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 14, offset: 5
+2025-11-17T15:40:29.775+07:00  WARN 34665 --- [kafka-producer] [ad | producer-1] o.a.k.clients.producer.internals.Sender  : [Producer clientId=producer-1] Got error produce response with correlation id 20 on topic-partition message-topic-0, retrying (2 attempts left). Error: NOT_LEADER_OR_FOLLOWER
+2025-11-17T15:40:29.802+07:00  WARN 34665 --- [kafka-producer] [ad | producer-1] o.a.k.clients.producer.internals.Sender  : [Producer clientId=producer-1] Received invalid metadata error in produce request on partition message-topic-0 due to org.apache.kafka.common.errors.NotLeaderOrFollowerException: For requests intended only for the leader, this error indicates that the broker is not the current leader. For requests intended for any replica, this error indicates that the broker is not a replica of the topic partition.. Going to request metadata update now
+2025-11-17T15:40:29.816+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 16, offset: 3
+2025-11-17T15:40:29.842+07:00  WARN 34665 --- [kafka-producer] [ad | producer-1] o.a.k.clients.producer.internals.Sender  : [Producer clientId=producer-1] Got error produce response with correlation id 22 on topic-partition message-topic-0, retrying (2 attempts left). Error: NOT_LEADER_OR_FOLLOWER
+2025-11-17T15:40:29.843+07:00  WARN 34665 --- [kafka-producer] [ad | producer-1] o.a.k.clients.producer.internals.Sender  : [Producer clientId=producer-1] Received invalid metadata error in produce request on partition message-topic-0 due to org.apache.kafka.common.errors.NotLeaderOrFollowerException: For requests intended only for the leader, this error indicates that the broker is not the current leader. For requests intended for any replica, this error indicates that the broker is not a replica of the topic partition.. Going to request metadata update now
+2025-11-17T15:40:29.843+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 18, offset: 6
+2025-11-17T15:40:29.843+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 19, offset: 7
+2025-11-17T15:40:31.079+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 15, offset: 5
+2025-11-17T15:40:31.109+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 17, offset: 6
+2025-11-17T15:41:47.739+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 20, offset: 8
+2025-11-17T15:41:48.776+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 21, offset: 7
+2025-11-17T15:41:49.789+07:00  INFO 34665 --- [kafka-producer] [ad | producer-1] c.e.p.service.MessageProducerService     : Message sent successfully to topic message-topic with key 22, offset: 8
